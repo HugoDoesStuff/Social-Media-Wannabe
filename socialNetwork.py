@@ -1,44 +1,68 @@
 ## Made by: Hugo Rodriguez
 ## My Social Network
 
-class user:
-    def __init__(self, firstName, lastName, username, bio, userID):
-        self.firstName = firstName
-        self.lastName = lastName
+class User:
+    def __init__(self, username):
         self.username = username
-        self.bio = bio
-        self.userID = userID
+##        self.firstName = " "
+##        self.lastName = " "
+##        self.bio = " "
         self.friends = []
         self.posts = []
 
-    def addFriend(self,username):
-        self.friends.append(username)
+    def addPost(self, post):
+        self.posts.append(post)
 
-##    def unFriend():
+    def addFriend(self, human):
+        self.friends.append(human)
 
-    def viewNewsFeed(self,friends):
+##    def unFriend(self, username):
+##        for friend in self.friends:
+##            if friend.username == username:
+##                self.friends.remove(username)
+
+    def showUsernames(self):
         for friend in self.friends:
-            print (friends.posts)
+            print (friend.username)
 
+##    def addFirstName(self, firstName):
+##        self.firstName = firstName
+##
+##    def addLastName(self, lastName):
+##        self.lastName = lastName
+##
+##    def addBio(self, bio):
+##        self.bio = bio
 
-   
+    def viewNewsFeed(self, friends):
+        for friend in self.friends:
+            print(friend.posts)
+            
+
 
 if __name__ == "__main__":
-    firstName = "Hugo"
-    lastName = "Rodriguez"
+##    firstName = "Hugo"
+##    lastName = "Rodriguez"
     username = "JuiceIsNoice"
-    bio = "Sup I'm noice"
-    userID = "0000"
+##    bio = "Sup I'm noice"
+##    userID = "0000"
 
-    hugo = user(firstName, lastName, username, bio, userID)
-    lucy = user("Lucy", "Lucille", "lucygoosy", "I like geese", "0123")
-    mojojojo = user("Mojo", "Jojo", "mojojojo", "I am mojo jojo", "1234")
+    hugo = User(username)
+    obama = User("TheRockObama")
+    mojojojo = User("Mojo-Jojo")
 
-    hugo.addFriend("lucygoosy")
-    hugo.addFriend("mojojojo")
-    print(hugo.friends)
+    hugo.addFriend(obama)
+    hugo.addFriend(mojojojo)
+    hugo.showUsernames()
+    obama.addPost("IM OBAMA")
+    mojojojo.addPost("I WILL TAKE OVER THE WORLD MWUAHAHAHAHA")
+    hugo.viewNewsFeed(hugo.friends)
+##    hugo.unFriend(User("mojojojo"))
+    #hugo.showUsernames()
+##    hugo.addFirstName("Hugo")
+##    hugo.addLastName("Rodriguez")
+##    hugo.addBio("Noice")
 
-    hugo.viewNewsFeed(username)
 
 ##            print(lucy.firstName, lucy.lastName)
 ##            lucy.posts.append("THIS IS NOICENESS")
@@ -46,8 +70,4 @@ if __name__ == "__main__":
 ##
 ##            print(mojojojo.firstName, mojojojo.lastName)
 ##            mojojojo.posts.append("I WILL TAKE OVER THE WORLD")
-##            print(mojojojo.posts)
-
-    
-
-    
+##            print(mojojojo.posts
