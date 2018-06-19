@@ -16,10 +16,8 @@ class User:
     def addFriend(self, human):
         self.friends.append(human)
 
-##    def unFriend(self, username):
-##        for friend in self.friends:
-##            if friend.username == username:
-##                self.friends.remove(username)
+    def unFriend(self, person):
+                self.friends.remove(person)
 
     def showUsernames(self):
         for friend in self.friends:
@@ -50,13 +48,20 @@ if __name__ == "__main__":
     hugo = User(username)
     obama = User("TheRockObama")
     mojojojo = User("Mojo-Jojo")
+    chuck = User("CoolChuck123")
 
     hugo.addFriend(obama)
     hugo.addFriend(mojojojo)
+    hugo.addFriend(chuck)
     hugo.showUsernames()
     obama.addPost("IM OBAMA")
     mojojojo.addPost("I WILL TAKE OVER THE WORLD MWUAHAHAHAHA")
+    chuck.addPost("Y0 I'm c00l3st chuck 4live g0t m0n3y 4 d4yz")
     hugo.viewNewsFeed(hugo.friends)
+    hugo.unFriend(chuck)
+    hugo.showUsernames()
+
+
 ##    hugo.unFriend(User("mojojojo"))
     #hugo.showUsernames()
 ##    hugo.addFirstName("Hugo")
