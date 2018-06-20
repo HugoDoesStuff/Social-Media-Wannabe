@@ -2,14 +2,14 @@
 ## My Social Network
 
 class User:
-    def __init__(self, username):
+    def __init__(self, username, userID):
         self.username = username
 ##        self.firstName = " "
 ##        self.lastName = " "
 ##        self.bio = " "
         self.friends = []
         self.posts = []
-        self.userID = " "
+        self.userID = userID
 
     def addFriend(self, human):
         self.friends.append(human)
@@ -45,34 +45,71 @@ class User:
     def createUserID(self, num):
         self.postID = num
 
-    class Post:
-        def __init__(self, content):
-            self.content = content
-            self.postID = " "
-            self.comments = []
+class Post:
+    def __init__(self, content):
 
-        def createPostID(self, num):
-            self.postID = num
+        self.content = content
+        self.postID = " "
+        self.comments = []
+
+    def createPostID(self, num):
+        self.postID = num
 
 
-    class Network:
-        def __init__(self):
-            self.users = []
+class Network:
+    def __init__(self):
+        self.users = []
+    
+    def createUser(self, username):
+        
+        mySize = int(len(self.users))+1
+        myUser = User(username, mySize)
+##        myUser.createUserID(mySize)
+        self.users.append(myUser)
+        print(len(self.users))
+        
+        print("USER CREATED")
+    
+    def addConnection(self, user1, user2):
+        user1OBJ = self.getOBJ(user1)
+        user2OBJ = self.getOBJ(user2)
 
-        def createUser(self, username):
-            myUser = User(username)
-            self.users.append(myUser)
-            myUser.createUserID(len(users))
+        user1OBJ.addFriend(user2OBJ)
+        user2OBJ.addFriend(user1OBJ)
 
+    def getOBJ(self, username):
+        userID = self.getUserID(username)
+        userOBJ = self.users[userID-1]
+        print(userOBJ.username)
+        return userOBJ
+
+    def getUserID(self, username):
+        for i in self.users:
+            if i.username == username:
+                return i.userID
 
 if __name__ == "__main__":
 ##    firstName = "Hugo"
 ##    lastName = "Rodriguez"
-    username = "JuiceIsNoice"
+##    username = "JuiceIsNoice"
 ##    bio = "Sup I'm noice"
 ##    userID = "0000"
     network = Network()
     network.createUser("JuiceIsNoice")
+    network.createUser("HI")
+    network.createUser("diana")
+    diana = network.getOBJ("diana")
+    juice = network.getOBJ("JuiceIsNoice")
+    hi = network.getOBJ("HI")
+    
+    
+    
+    #juice = network.getOBJ("JuiceIsNoice")
+##    obama = network.getOBJ("TheRockObama")
+##    mojojojo = network.getOBJ("Mojo-Jojo")
+    
+    
+    
 
 ##    hugo = User(username)
 ##    obama = User("TheRockObama")
@@ -92,16 +129,16 @@ if __name__ == "__main__":
 
 
 ##    hugo.unFriend(User("mojojojo"))
-    #hugo.showUsernames()
+##    hugo.showUsernames()
 ##    hugo.addFirstName("Hugo")
 ##    hugo.addLastName("Rodriguez")
 ##    hugo.addBio("Noice")
 
 
-##            print(lucy.firstName, lucy.lastName)
-##            lucy.posts.append("THIS IS NOICENESS")
-##            print(lucy.posts)
-##
-##            print(mojojojo.firstName, mojojojo.lastName)
-##            mojojojo.posts.append("I WILL TAKE OVER THE WORLD")
-##            print(mojojojo.posts
+##    print(lucy.firstName, lucy.lastName)
+##    lucy.posts.append("THIS IS NOICENESS")
+##    print(lucy.posts) 
+## 
+##    print(mojojojo.firstName, mojojojo.lastName)
+##    mojojojo.posts.ap pend("I WILL TAKE OVER THE WORLD")
+##    print(mojojojo.posts       
