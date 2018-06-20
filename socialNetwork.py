@@ -9,15 +9,13 @@ class User:
 ##        self.bio = " "
         self.friends = []
         self.posts = []
-
-    def addPost(self, post):
-        self.posts.append(post)
+        self.userID = " "
 
     def addFriend(self, human):
         self.friends.append(human)
 
     def unFriend(self, person):
-                self.friends.remove(person)
+        self.friends.remove(person)
 
     def showUsernames(self):
         for friend in self.friends:
@@ -35,7 +33,36 @@ class User:
     def viewNewsFeed(self, friends):
         for friend in self.friends:
             print(friend.posts)
-            
+
+    def addPost(self, content):
+        self.postContent = content
+
+    def createPost(self, content):
+         myPost = posts(content)
+         self.posts.append(myPost)
+         myPost.createPostID(len(posts))
+
+    def createUserID(self, num):
+        self.postID = num
+
+    class Post:
+        def __init__(self, content):
+            self.content = content
+            self.postID = " "
+            self.comments = []
+
+        def createPostID(self, num):
+            self.postID = num
+
+
+    class Network:
+        def __init__(self):
+            self.users = []
+
+        def createUser(self, username):
+            myUser = User(username)
+            self.users.append(myUser)
+            myUser.createUserID(len(users))
 
 
 if __name__ == "__main__":
@@ -44,22 +71,24 @@ if __name__ == "__main__":
     username = "JuiceIsNoice"
 ##    bio = "Sup I'm noice"
 ##    userID = "0000"
+    network = Network()
+    network.createUser("JuiceIsNoice")
 
-    hugo = User(username)
-    obama = User("TheRockObama")
-    mojojojo = User("Mojo-Jojo")
-    chuck = User("CoolChuck123")
+##    hugo = User(username)
+##    obama = User("TheRockObama")
+##    mojojojo = User("Mojo-Jojo")
+##    chuck = User("CoolChuck123")
 
-    hugo.addFriend(obama)
-    hugo.addFriend(mojojojo)
-    hugo.addFriend(chuck)
-    hugo.showUsernames()
-    obama.addPost("IM OBAMA")
-    mojojojo.addPost("I WILL TAKE OVER THE WORLD MWUAHAHAHAHA")
-    chuck.addPost("Y0 I'm c00l3st chuck 4live g0t m0n3y 4 d4yz")
-    hugo.viewNewsFeed(hugo.friends)
-    hugo.unFriend(chuck)
-    hugo.showUsernames()
+##    hugo.addFriend(obama)
+##    hugo.addFriend(mojojojo)
+##    hugo.addFriend(chuck)
+##    hugo.showUsernames()
+##    obama.createPost("IM OBAMA")
+##    mojojojo.createPost("I WILL TAKE OVER THE WORLD MWUAHAHAHAHA")
+##    chuck.createPost("Y0 I'm c00l3st chuck 4live g0t m0n3y 4 d4yz")
+##    hugo.viewNewsFeed(hugo.friends)
+##    hugo.unFriend(chuck)
+##    hugo.showUsernames()
 
 
 ##    hugo.unFriend(User("mojojojo"))
